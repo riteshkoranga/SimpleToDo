@@ -14,7 +14,10 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/tasks", {})
+  .connect(
+    "mongodb://mongo:dvxpWEuOwvWdWCaVSeHfSvcEnmhoLaJI@autorack.proxy.rlwy.net:40518/tasks",
+    {}
+  )
   .then(() => {
     console.log("Connected to MongoDB");
   })
