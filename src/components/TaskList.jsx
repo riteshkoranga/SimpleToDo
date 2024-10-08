@@ -26,8 +26,13 @@ const TaskList = ({ tasks, deleteTask, updateTask }) => {
               >
                 {task.description}
               </p>
-              <p className="text-sm font-mono border-none">
-                Status: {task.completed ? "Completed" : "Incomplete"}
+              <p className="text-sm font-mono border-none ">
+                Status:{" "}
+                {task.completed ? (
+                  <span className="font-bold font-mono">Completed</span> // Change made here
+                ) : (
+                  "Incomplete"
+                )}
               </p>
               <div className="flex justify-between mt-4">
                 <button
