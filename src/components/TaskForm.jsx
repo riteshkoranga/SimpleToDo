@@ -14,8 +14,8 @@ const TaskForm = ({ addTask }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center ml-4 mr-4 mt-11 border border-gray-300  rounded shadow-lg">
-      <h2 className="font-mono text-3xl mb-4 mt-3 ">Add New Task</h2>
+    <div className="flex flex-col items-center justify-center mx-4 mt-11 border border-gray-300 rounded shadow-lg overflow-hidden">
+      <h2 className="font-mono text-3xl mb-4 mt-3">Add New Task</h2>
       <form
         onSubmit={handleSubmit}
         className="w-full bg-white p-6 rounded shadow-md"
@@ -29,7 +29,7 @@ const TaskForm = ({ addTask }) => {
           placeholder="Task Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 text-l mb-4 border border-gray-300 rounded font-mono"
+          className="w-full p-2 text-lg mb-4 border border-gray-300 rounded font-mono"
         />
         <label
           htmlFor="taskDescription"
@@ -41,15 +41,14 @@ const TaskForm = ({ addTask }) => {
           name="taskDescription"
           placeholder="Task Description"
           value={description}
-          rows={6}
-          cols={30}
+          rows={4} // Reduced rows for better responsiveness
           onChange={(e) => setDescription(e.target.value)}
           className="w-full p-2 mb-4 border border-gray-300 rounded font-mono"
         ></textarea>
         <div className="flex justify-center items-center">
           <button
             type="submit"
-            className="w-3/7 font-mono text-center p-2 bg-green-600 text-white rounded hover:bg-green-700 transition duration-200 text-2xl"
+            className="w-full md:w-3/7 font-mono text-center p-2 bg-green-600 text-white rounded hover:bg-green-700 transition duration-200 text-xl" // Adjusted width for better mobile support
           >
             Add Task
           </button>

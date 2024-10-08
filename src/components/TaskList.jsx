@@ -1,16 +1,17 @@
 import "../style/list.css";
+
 const TaskList = ({ tasks, deleteTask, updateTask }) => {
   return (
-    <div>
+    <div className="overflow-auto">
       <h2 className="text-center text-2xl font-mono mb-4">Task List</h2>
       {tasks.length === 0 ? (
         <p className="text-center font-mono">No tasks available.</p>
       ) : (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {tasks.map((task) => (
             <div
               key={task._id}
-              className="task border border-gray-300 p-4 rounded shadow-lg"
+              className="task border border-gray-300 p-4 rounded shadow-lg overflow-hidden"
             >
               <h3
                 className={`text-lg font-semibold font-mono ${
@@ -26,10 +27,10 @@ const TaskList = ({ tasks, deleteTask, updateTask }) => {
               >
                 {task.description}
               </p>
-              <p className="text-sm font-mono border-none ">
+              <p className="text-sm font-mono border-none">
                 Status:{" "}
                 {task.completed ? (
-                  <span className="font-bold font-mono">Completed</span> // Change made here
+                  <span className="font-bold font-mono">Completed</span>
                 ) : (
                   "Incomplete"
                 )}
