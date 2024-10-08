@@ -8,18 +8,18 @@ const TaskList = ({ tasks, deleteTask, updateTask }) => {
         <p>No tasks available.</p>
       ) : (
         tasks.map((task) => (
-          <div key={task.id} className="task">
+          <div key={task._id} className="task">
             <h3>{task.title}</h3>
             <p>{task.description}</p>
             <p>Status: {task.completed ? "Completed" : "Incomplete"}</p>
             <button
               onClick={() =>
-                updateTask(task.id, { completed: !task.completed })
+                updateTask(task._id, { completed: !task.completed })
               }
             >
               {task.completed ? "Mark Incomplete" : "Mark Complete"}
             </button>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <button onClick={() => deleteTask(task._id)}>Delete</button>
           </div>
         ))
       )}
