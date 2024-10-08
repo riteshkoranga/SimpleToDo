@@ -73,7 +73,7 @@ router.put("/:id", async (req, res) => {
     task.completed = completed !== undefined ? completed : task.completed;
 
     await task.save();
-    //res.status(200).json(task);
+    res.status(200).json(task);
   } catch (err) {
     console.error(err); // Log the error for debugging
     res.status(500).json({ error: "Server error" });

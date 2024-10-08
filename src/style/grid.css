@@ -1,7 +1,14 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-columns: 0.3fr 1fr; /* Two equal columns */
     gap: 20px; /* Space between the two grids */
     padding: 20px;
   }
+
+
+@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+  .grid-container {
+      grid-template-columns: 1fr; /* Single column layout on small screens */
+  }
+}
   

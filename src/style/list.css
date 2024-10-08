@@ -1,0 +1,20 @@
+.red-line {
+    display: inline-block; 
+    position: relative;
+    color: inherit; /* Keeps the text color the same */
+  }
+  
+  .red-line::after {
+
+    
+    margin-right: 1px;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%; /* Adjust to align the line properly */
+    height: 2px; /* Thickness of the line */
+    background-color: red; /* Color of the line */
+    transform: translateY(-50%); /* Center the line vertically */
+  }
+  

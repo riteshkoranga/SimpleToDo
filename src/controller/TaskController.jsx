@@ -9,26 +9,20 @@ const API_URL = "http://localhost:5000/tasks"; // Update with your backend URL
 const Controller = () => {
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
   const fetchTasks = async () => {
     try {
       const response = await axios.get(API_URL);
       setTasks(response.data);
+      console.log("Fetched tasks:", response.data); // Debugging log
     } catch (err) {
       console.error("Error fetching tasks:", err);
     }
   };
 
   const addTask = async (newTask) => {
-    try {
-      await axios.post(API_URL, newTask);
-      fetchTasks(); // Reload tasks after adding a new one
-    } catch (err) {
-      console.error("Error adding task:", err);
-    }
+    await axios.post(API_URL, newTask);
+    console.log(newTask.data);
+    fetchTasks(); // Reload tasks after adding a new one
   };
 
   const deleteTask = async (taskId) => {
@@ -41,14 +35,12 @@ const Controller = () => {
   };
 
   const updateTask = async (taskId, updatedTask) => {
-    try {
-      await axios.put(`${API_URL}/${taskId}`, updatedTask);
-      fetchTasks(); // Reload tasks after updating
-    } catch (err) {
-      console.error("Error updating task:", err);
-    }
+    await axios.put(`${API_URL}/${taskId}`, updatedTask);
+    fetchTasks(); // Reload tasks after updating
   };
-
+  useEffect(() => {
+    fetchTasks();
+  }, []);
   return (
     <GridContainer>
       <TaskForm addTask={addTask} />
