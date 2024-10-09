@@ -8,16 +8,14 @@ const taskRoutes = require("./routes/TaskRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = ["http://localhost:3000", "http://13.61.25.98:5000"];
 // Middleware
-app.use(cors());
+app.use(cors({ origin: allowedOrigins }));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    "mongodb://mongo:dvxpWEuOwvWdWCaVSeHfSvcEnmhoLaJI@autorack.proxy.rlwy.net:40518/tasks",
-    {}
-  )
+  .connect("mongodb://localhost:27017/tasks")
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -28,16 +26,16 @@ mongoose
 // API routes
 app.use("/tasks", taskRoutes);
 
-// //Serve static files from the React app
-// app.use(express.static(path.join(__dirname, "build")));
+//Serve static files from the React app
+app.use(express.static(path.join(__dirname, "build")));
 
-// // The "catchall" handler: for any request that doesn't
-// // match one above, send back the React app.
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+// The "catchall" handler: for any request that doesn't
+// match one above, send back the React app.
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
